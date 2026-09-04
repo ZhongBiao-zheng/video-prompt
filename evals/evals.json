@@ -1,0 +1,448 @@
+{
+  "skill_name": "video-prompt",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我写一个 Kling 用的视频提示词：一个穿旗袍的女人在上海的老弄堂里走路，想要有王家卫那种感觉。",
+      "expected_output": "完整的四段式 Prompt（A 节繁派），包含总纲句（王家卫风格说明）、场景妆造（旗袍描述/弄堂环境）、多镜头分镜（至少5镜，含极近起幅和暴推特写）、后期音效（调色+音乐+音效）。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a1_has_skeleton",
+          "description": "包含四段式骨架（总纲句/场景妆造/分镜/后期音效）",
+          "type": "presence"
+        },
+        {
+          "id": "a2_has_color_contrast",
+          "description": "提到至少一组颜色对撞（如墨绿×暗金，或朱红×玄黑）",
+          "type": "presence"
+        },
+        {
+          "id": "a3_has_opening_macro",
+          "description": "开场有极近起幅（极近/贴近某材质）",
+          "type": "presence"
+        },
+        {
+          "id": "a4_has_crash_zoom",
+          "description": "有暴推特写或等效情绪顶点镜头",
+          "type": "presence"
+        },
+        {
+          "id": "a5_has_ending_type",
+          "description": "结尾有明确的定式（直视定格/光晕溶白/背影消隐）",
+          "type": "presence"
+        },
+        {
+          "id": "a6_has_audio",
+          "description": "后期音效段包含调色风格+音乐+具体音效",
+          "type": "presence"
+        },
+        {
+          "id": "a7_no_meta_annotations",
+          "description": "正文中没有括号解释（如「必填」「示例」等）",
+          "type": "absence"
+        },
+        {
+          "id": "a8_no_preamble",
+          "description": "没有「好的，我来帮你写...」之类的铺垫语",
+          "type": "absence"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我想用 Runway 生成一个日本京都秋日街道的短片，女主是个穿和服的学生，感觉要有点忧郁和思念感。帮我写提示词，9个镜头左右。",
+      "expected_output": "完整的九镜头序列（A 节繁派），含总纲句、和服/京都场景妆造、九个分镜（开场极近起幅→肢体细节→情绪顶点→结尾定式）、后期音效（秋日调色+日式音乐+自然音效）。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "b1_has_skeleton",
+          "description": "包含四段式骨架",
+          "type": "presence"
+        },
+        {
+          "id": "b2_nine_shots",
+          "description": "有8个或以上分镜",
+          "type": "presence"
+        },
+        {
+          "id": "b3_has_wardrobe",
+          "description": "场景妆造段落描述了和服的具体颜色和细节",
+          "type": "presence"
+        },
+        {
+          "id": "b4_has_color_contrast",
+          "description": "有颜色对撞设计",
+          "type": "presence"
+        },
+        {
+          "id": "b5_has_ending",
+          "description": "最后一镜有明确结尾定式",
+          "type": "presence"
+        },
+        {
+          "id": "b6_has_audio",
+          "description": "后期音效段完整（调色+音乐+音效）",
+          "type": "presence"
+        },
+        {
+          "id": "b7_no_preamble",
+          "description": "没有铺垫语",
+          "type": "absence"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "优化这个可灵的提示词：一个女孩站在海边，风吹着她的头发，很美，镜头慢慢推近，有海浪声。",
+      "expected_output": "直接输出完整优化版（A 节繁派），不输出差距分析；四段式结构，加入颜色对撞、极近起幅、情绪顶点、结尾定式、完整后期音效。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "c1_no_gap_analysis",
+          "description": "没有输出差距分析段落",
+          "type": "absence"
+        },
+        {
+          "id": "c2_has_full_prompt",
+          "description": "直接输出完整优化后的提示词",
+          "type": "presence"
+        },
+        {
+          "id": "c3_much_richer",
+          "description": "优化后的提示词比原始版本至少长3倍（质量提升）",
+          "type": "length"
+        },
+        {
+          "id": "c4_has_color",
+          "description": "加入了颜色对撞",
+          "type": "presence"
+        },
+        {
+          "id": "c5_has_ending_type",
+          "description": "有明确结尾定式",
+          "type": "presence"
+        },
+        {
+          "id": "c6_has_audio",
+          "description": "有完整后期音效段",
+          "type": "presence"
+        },
+        {
+          "id": "c7_no_preamble",
+          "description": "没有铺垫语",
+          "type": "absence"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "帮我写15秒 Kling 图生视频提示词：[@image:ref_ui:图片1:https://example.com/ui.png] 是智能手机精灵对战游戏界面。[@image:ref_base:图片2:https://example.com/base.png] 是火栗狐基础形态。[@image:ref_evolved:图片3:https://example.com/evolved.png] 是火栗狐进化形态。[@image:ref_card:图片4:https://example.com/card.png] 是进化后的卡牌形态。[@image:ref_choose:图片5:https://example.com/choose.png] 是精灵进化选择界面。请做火栗狐进化动画。",
+      "expected_output": "参考图时间轴格式：第一行写15秒和标题，第二段逐张绑定参考图用途，随后按0-2/2-4/4-6/6-8/8-11/11-13/13-15写分镜，最后写风格与氛围；每个关键镜头明确引用对应参考图并约束UI不重绘。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "d1_has_reference_binding",
+          "description": "开头逐张说明参考图用途",
+          "type": "presence"
+        },
+        {
+          "id": "d2_preserves_refs",
+          "description": "保留原始@image引用文本",
+          "type": "presence"
+        },
+        {
+          "id": "d3_has_exact_timeline",
+          "description": "包含15秒时间轴且分段合计15秒",
+          "type": "presence"
+        },
+        {
+          "id": "d4_uses_ui_as_base",
+          "description": "明确对战UI是画面基底且保持布局",
+          "type": "presence"
+        },
+        {
+          "id": "d5_subject_consistent",
+          "description": "主体始终是火栗狐，没有混入其他精灵名称",
+          "type": "absence"
+        },
+        {
+          "id": "d6_has_final_card_landing",
+          "description": "结尾落到进化后卡牌或已有目标状态",
+          "type": "presence"
+        },
+        {
+          "id": "d7_has_constraints",
+          "description": "包含不重绘UI、不乱码、不变更主体身份等约束",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "帮我写个 Seedance 的提示词，15秒：一只毛绒小狐狸布偶在深夜厨房里偷偷做煎蛋，动作笨拙但认真，最后被开灯的小主人抓个正着。狐狸有参考图（图片1）。",
+      "expected_output": "B 节简派格式：开头一行全局意图（风格 / 质感 + 狐狸深夜厨房做煎蛋被抓）、主体行（狐狸@Image 1 + 关键特征 + 负面约束防画成真狐狸）、场景行、音乐行（不要BGM只出音效）、5-6 个 Shot 行，前缀 Shot 01 / Shot 02（大白话机位 + 事件，无【阶段】）、结尾一行约束（全片连续性 + 禁止项）。无颜色对撞、无英文术语括注、无后期调色段。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "e1_has_subject_line",
+          "description": "有主体行且用@Image 1引用，含负面约束（如不能画成真实狐狸）",
+          "type": "presence"
+        },
+        {
+          "id": "e2_has_audio_rule",
+          "description": "有音乐行且明确不要任何背景音乐、只生成音效",
+          "type": "presence"
+        },
+        {
+          "id": "e3_shot_count",
+          "description": "有5个或以上 Shot 行，前缀为 Shot 01、Shot 02 两位编号，每镜是机位大白话+具体事件",
+          "type": "presence"
+        },
+        {
+          "id": "e4_no_english_terms",
+          "description": "没有「中文（英文）」运镜术语括注格式（如 Dolly In / Crash Zoom）",
+          "type": "absence"
+        },
+        {
+          "id": "e5_no_verbose_skeleton",
+          "description": "没有总纲句、场景妆造段、颜色对撞、后期调色段",
+          "type": "absence"
+        },
+        {
+          "id": "e6_no_mood_adjectives",
+          "description": "镜头行没有堆砌氛围形容词（晶莹/治愈/元气满满等）",
+          "type": "absence"
+        },
+        {
+          "id": "e7_no_timestamps",
+          "description": "Shot 行不带时间段（无「0-2秒」「0–3 秒」式标签，也无 镜头1 式旧前缀）",
+          "type": "absence"
+        },
+        {
+          "id": "e_intent_line",
+          "description": "第一行是一句全局意图（含风格 / 质感词 + 事件概述），Shot 行内无风格词",
+          "type": "presence"
+        },
+        {
+          "id": "e_constraint_line",
+          "description": "最后有一行「约束：」写全片连续性和禁止项（如无字幕 / 无 BGM / 不新增人物）",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "把这段提示词改成适合即梦 Seedance 用的：整体风格为治愈系奇幻插画风，8K超高清，梦幻氛围。场景妆造：小女孩穿鹅黄色连衣裙，麻花辫，眼神清澈灵动。颜色对撞：鹅黄×天空蓝。镜头1：极近起幅（Macro Opening），镜头极度贴近草叶露珠，焦点丝滑转移至远处的小女孩。镜头2：轨道推镜（Dolly In），小女孩在花田中奔跑，裙摆飞扬，画面晶莹剔透充满元气。后期：暖调LUT，轻快钢琴配乐，鸟鸣音效。",
+      "expected_output": "输出简派改写版：删掉颜色对撞/后期段/英文术语括注/氛围形容词（8K、梦幻、晶莹、元气），「治愈系奇幻插画风」压缩进开头一行意图；主体+场景+音乐（不要BGM只出音效）+若干 Shot 01 / Shot 02 前缀的大白话镜头行；保留可用的事件信息（露珠特写转焦、花田奔跑）；结尾一行约束。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "f1_stripped_skeleton",
+          "description": "输出中没有颜色对撞段、后期LUT段、「8K超高清」「梦幻氛围」；「整体风格为…」总纲句被压缩为开头一行意图而非独立段",
+          "type": "absence"
+        },
+        {
+          "id": "f2_no_english_terms",
+          "description": "没有英文运镜术语括注（Macro/Dolly In等）",
+          "type": "absence"
+        },
+        {
+          "id": "f3_audio_converted",
+          "description": "配乐要求被改写为不要背景音乐、只生成音效",
+          "type": "presence"
+        },
+        {
+          "id": "f4_events_preserved",
+          "description": "保留了露珠特写转焦、花田奔跑等具体事件",
+          "type": "presence"
+        },
+        {
+          "id": "f5_no_mood_adjectives",
+          "description": "删掉了晶莹剔透、元气、治愈、梦幻等氛围形容词",
+          "type": "absence"
+        },
+        {
+          "id": "f6_no_preamble",
+          "description": "没有铺垫语和差距分析",
+          "type": "absence"
+        },
+        {
+          "id": "f7_shot_numbering",
+          "description": "分镜前缀为 Shot 01、Shot 02（两位编号），不含时间段标签",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "帮我写个视频提示词：一个宇航员在空间站里种花，花开的瞬间失重的水珠飘起来。",
+      "expected_output": "用户未说明目标平台，应先问一句「这是给哪个视频模型用的？」再动笔，不直接输出成品 prompt。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "g1_asks_platform",
+          "description": "先询问目标平台/视频模型，而不是直接输出完整提示词",
+          "type": "presence"
+        },
+        {
+          "id": "g2_no_full_prompt",
+          "description": "在得到平台答复前，没有输出完整的分镜提示词成品",
+          "type": "absence"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Seedance 2.5，10 秒：@Image 1 是我的小骑士角色图，@Video 1 是一段真人起跳挥剑的动作视频，让小骑士在城堡废墟上做同样的动作。",
+      "expected_output": "B 节简派：主体行锁小骑士（@Image 1 完整可见造型），Shot 行里对@Video 1 写清借什么（起跳—挥剑动作节奏）、不借什么（真人身份 / 场景 / 声音）；事件按因果顺序（起跳→空中→落地）；音效行；Shot 01 / Shot 02 编号，无秒数。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "g1_reference_scope",
+          "description": "对@Video 1 的引用写明借动作节奏、不继承人物 / 场景 / 声音",
+          "type": "presence"
+        },
+        {
+          "id": "g2_subject_lock",
+          "description": "主体行 @Image 1 并保持角色可见造型（服装 / 配饰）不重设计",
+          "type": "presence"
+        },
+        {
+          "id": "g3_causal_order",
+          "description": "动作按 起跳→空中→落地 的因果顺序写，落地不先于起跳",
+          "type": "presence"
+        },
+        {
+          "id": "g4_shot_numbering",
+          "description": "分镜前缀为 Shot 01、Shot 02，无时间段标签",
+          "type": "presence"
+        },
+        {
+          "id": "g5_standard_labels",
+          "description": "素材标签用 @Image 1 / @Video 1，不用 @图片1 / 图1",
+          "type": "presence"
+        },
+        {
+          "id": "g6_audio_rule",
+          "description": "有不要 BGM、只出音效的声音要求",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Seedance 2.5，给我一个完整导演方案：20 秒 16:9。@Image 1 是女主完整人物参考（保持原服装），@Image 2 是老式火车站台场景图，@Audio 1 是她的音色参考。她在站台上拿到一封信，读完抬头，说一句「我等到了」。",
+      "expected_output": "full-direction 四段：导演方案（模式 basic、20s、16:9、一句话意图、Shot 概览）→ 素材映射表（@Image 1 身份锁完整可见人物、不继承背景；@Image 2 场景；@Audio 1 音色绑定到台词 Shot）→ 连续性与禁止项 → 唯一一个最终提示词代码块（开头意图行 + 简派四段 + Shot 01… + 结尾约束行，台词原文，不要 BGM 只出音效）。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "h1_four_sections",
+          "description": "有导演方案、素材映射、连续性与禁止项、最终提示词四段",
+          "type": "presence"
+        },
+        {
+          "id": "h2_asset_table",
+          "description": "素材映射是表格，每行含用途 / 生效时段 / 保留 / 不继承",
+          "type": "presence"
+        },
+        {
+          "id": "h3_single_prompt_block",
+          "description": "只有一个最终提示词代码块",
+          "type": "presence"
+        },
+        {
+          "id": "h4_timbre_bound",
+          "description": "@Audio 1 绑定到说「我等到了」的那个 Shot，写明保留的音色特征",
+          "type": "presence"
+        },
+        {
+          "id": "h5_wardrobe_lock",
+          "description": "@Image 1 保持原服装、不继承参考图背景",
+          "type": "presence"
+        },
+        {
+          "id": "h6_no_bgm",
+          "description": "最终提示词要求不要 BGM 只出音效",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Seedance 2.5，精确 30 秒时间轴，16:9：一位老木匠在工坊里完成一把椭圆木碗的最后打磨，第 10 秒吹掉木屑，第 25 秒把碗举到窗光下看。只要提示词。",
+      "expected_output": "时间轴模式：0-30s 连续不重叠切片（如 0-4s / 4-10s / 10-18s / 18-25s / 25-30s），每片含阶段功能 + 可见动作 + 机位 + 声音 + 结束状态；第 10 秒吹木屑、第 25 秒举碗落在对应切片边界；不要 BGM 只出打磨 / 呼气 / 木屑声；只有一个代码块，无解释。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "i1_timeline_format",
+          "description": "用 0-4s 式时间切片而非 Shot 编号",
+          "type": "presence"
+        },
+        {
+          "id": "i2_continuous_total",
+          "description": "切片连续、不重叠、最后一片结束于 30s",
+          "type": "presence"
+        },
+        {
+          "id": "i3_user_beats_kept",
+          "description": "第 10 秒吹木屑、第 25 秒举碗保留在正确时间点",
+          "type": "presence"
+        },
+        {
+          "id": "i4_segment_fields",
+          "description": "每片有动作 + 机位 + 声音或结束状态",
+          "type": "presence"
+        },
+        {
+          "id": "i5_prompt_only",
+          "description": "只有一个代码块，没有导演方案段和解释",
+          "type": "presence"
+        },
+        {
+          "id": "i6_no_bgm",
+          "description": "不要 BGM，只出音效",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Seedance 2.5，30 秒 16:9：一位老木匠在工坊里完成一把椭圆木碗的最后打磨，吹掉木屑，把碗举到窗光下看，满意地点头。只要提示词。",
+      "expected_output": "30s 但用户没要精确时间轴 → 仍用 Shot 编号，且每个 Shot 带【阶段功能】（如 Shot 01【收尾打磨】、Shot 03【吹屑】、Shot 05【举碗】、Shot 06【余韵】）。开头一行意图含风格 / 光影（写实、窗光、木屑体积光）；主体 / 场景 / 音乐三行；结尾约束行锁木匠身份、服装、机位和光向，禁字幕 / BGM。无 0-4s 式秒段。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "j1_shot_with_stage",
+          "description": "Shot 行格式为 Shot 0N【2–4 字阶段功能】：…",
+          "type": "presence"
+        },
+        {
+          "id": "j2_no_seconds",
+          "description": "没有 0-4s / 4-10s 这类秒段",
+          "type": "absence"
+        },
+        {
+          "id": "j3_intent_first",
+          "description": "第一行是全局意图，含风格 / 光影质感词",
+          "type": "presence"
+        },
+        {
+          "id": "j4_constraint_last",
+          "description": "最后一行是约束：连续性锁 + 禁止项",
+          "type": "presence"
+        },
+        {
+          "id": "j5_causal",
+          "description": "打磨→吹屑→举碗→点头按因果顺序",
+          "type": "presence"
+        },
+        {
+          "id": "j6_sfx_only",
+          "description": "不要 BGM，只出打磨 / 呼气 / 木屑声",
+          "type": "presence"
+        }
+      ]
+    }
+  ]
+}
