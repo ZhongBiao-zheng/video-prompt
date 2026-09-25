@@ -6,8 +6,8 @@ AI 视频生成提示词 skill：给 Claude Code / Codex 等 agent 用，把想�
 
 | 平台 | 走法 | 特点 |
 |------|------|------|
-| Seedance / 即梦 | B 节（简派） | 一头 + 四段 + 一尾；Shot 只编号、大白话机位、只出音效不出 BGM、不堆形容词 |
-| Kling / 可灵、Sora、Runway、Hailuo、Pika、Vidu、纯文字 | A 节（繁派） | 总纲句 + 场景妆造 + 分镜序列 + 后期；运镜术语「中文（英文）」、颜色对撞 |
+| Seedance / 即梦 | `references/seedance.md`（简派） | 一头 + 四段 + 一尾；Shot 只编号、大白话机位、只出音效不出 BGM、不堆形容词 |
+| Kling / 可灵、Sora、Runway、Hailuo、Pika、Vidu、纯文字 | `references/general.md`（繁派） | 总纲句 + 场景妆造 + 分镜序列 + 后期；运镜术语「中文（英文）」、颜色对撞 |
 
 ## 安装
 
@@ -32,7 +32,7 @@ Codex 共用：`ln -s ~/.claude/skills/video-prompt ~/.codex/skills/video-prompt
 - 「给我一个 30 秒的导演方案，素材是图1 主角、图2 场景」
 - 「只诊断这段提示词哪里冲突」
 
-没说平台会先问一句。Seedance 支持 5 种输出：只要提示词（默认）/ 导演方案 / 只要脚本 / 只诊断 / 按原结构改写。
+平台从上下文判断，判断不了会先问一句。Seedance 支持 5 种输出：只要提示词（默认）/ 导演方案 / 只要脚本 / 只诊断 / 按原结构改写。
 
 Seedance 输出骨架：
 
@@ -53,7 +53,9 @@ Shot 02：……
 ## 文件
 
 ```
-SKILL.md                                   路由 + A 节 + B 节
+SKILL.md                                   分平台、判模式、路由到下面的文件
+references/general.md                      繁派：骨架 / 六维度 / 句式素材 / 颜色对撞 / 运镜词库 / 参考图绑定
+references/seedance.md                     简派：骨架与硬规则 / 范例 / 抽卡 / 自检 / 2.0 与 2.5 官方补充
 references/seedance-2.0-official.md        官方参数硬约束 / @素材指挥语法
 references/seedance-2.5-official.md        官方场景配方（真人脸 / 30s / 延长 / 编辑 / 白模 / 转场）
 references/seedance-director-workflow.md   分档 9 步 / 素材锁定表 / 输出模式 / 时间轴模式
