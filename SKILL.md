@@ -7,7 +7,7 @@ description: 写或优化视频生成模型的提示词：Seedance/即梦、Klin
 
 写或优化任何视频 prompt 之前，**先确定目标平台，再读对应文件**——两派规则相反，搞混两边都拉垮：
 
-- **Seedance / 即梦** → 读 `references/seedance.md`（简派：反故事板、反长 prompt、大白话机位、只出音效）
+- **Seedance / 即梦** → 读 `references/seedance.md`（简派：反故事板、反长 prompt、大白话机位、只出音效）；题材属于产品广告、宠物、打斗、MV、恐怖等 22 类之一时，再读 `references/seedance-genre-recipes.md`
 - **Kling / 可灵、Sora、Runway、Hailuo / 海螺、Pika、Vidu** → 读 `references/general.md`（繁派：结构化骨架、分镜序列、运镜术语、颜色对撞）
 
 平台从上下文判断：用户明确说了平台名，以平台名为准；没说时，用了 `@Image N` 素材标签或 `Shot 01` 编号按 Seedance 写。判断不了再问一句：「这是给哪个视频模型用的？」问清再写。
@@ -24,6 +24,7 @@ description: 写或优化视频生成模型的提示词：Seedance/即梦、Klin
 
 - `references/general.md`：繁派骨架、六维度、句式素材库、颜色对撞、运镜词库、参考图绑定、输出铁律
 - `references/seedance.md`：简派骨架与硬规则、范例、抽卡策略、出稿前自检、Seedance 2.0 / 2.5 官方补充
-- `references/seedance-director-workflow.md`：分档 9 步、素材锁定表、输出模式、时间轴模式
+- `references/seedance-director-workflow.md`：分档 9 步、素材锁定表、输出模式、秒段规则（2.5 带秒段，2.0 只编号）
 - `references/seedance-direction-patterns.md`：参考作用域、因果链、台词预算、延长方向、无缝转场、多宫格、矛盾自检
+- `references/seedance-genre-recipes.md`：22 类题材的必写锁、写法、常见问题（写实与手机实拍 / 商业与产品 / 叙事与表演 / 风格化动画 / 动作与奇观）
 - `references/seedance-2.0-official.md`、`references/seedance-2.5-official.md`：官方参数硬约束与场景配方

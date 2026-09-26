@@ -181,7 +181,7 @@
     {
       "id": 5,
       "prompt": "帮我写个 Seedance 的提示词，15秒：一只毛绒小狐狸布偶在深夜厨房里偷偷做煎蛋，动作笨拙但认真，最后被开灯的小主人抓个正着。狐狸有参考图（图片1）。",
-      "expected_output": "B 节简派格式：开头一行全局意图（风格 / 质感 + 狐狸深夜厨房做煎蛋被抓）、主体行（狐狸@Image 1 + 关键特征 + 负面约束防画成真狐狸）、场景行、音乐行（不要BGM只出音效）、5-6 个 Shot 行，前缀 Shot 01 / Shot 02（大白话机位 + 事件，无【阶段】）、结尾一行约束（全片连续性 + 禁止项）。无颜色对撞、无英文术语括注、无后期调色段。",
+      "expected_output": "B 节简派格式：开头一行全局意图（风格 / 质感 + 狐狸深夜厨房做煎蛋被抓）、主体行（狐狸@Image 1 + 关键特征 + 负面约束防画成真狐狸）、场景行、音乐行（不要BGM只出音效）、5-6 个 Shot 行，前缀 Shot 01（0-3s）/ Shot 02（3-5s）式编号加秒段（未注明版本按 2.5，秒段首尾相接、总和 15 秒；大白话机位 + 事件，无【阶段】）、结尾一行约束（全片连续性 + 禁止项）。无颜色对撞、无英文术语括注、无后期调色段。",
       "files": [],
       "assertions": [
         {
@@ -215,9 +215,9 @@
           "type": "absence"
         },
         {
-          "id": "e7_no_timestamps",
-          "description": "Shot 行不带时间段（无「0-2秒」「0–3 秒」式标签，也无 镜头1 式旧前缀）",
-          "type": "absence"
+          "id": "e7_shot_seconds",
+          "description": "未注明版本按 2.5：每个 Shot 编号后带秒段（如 Shot 01（0-3s）），秒段首尾相接、总和 15 秒；没有 镜头1 式旧前缀",
+          "type": "presence"
         },
         {
           "id": "e_intent_line",
@@ -234,7 +234,7 @@
     {
       "id": 6,
       "prompt": "把这段提示词改成适合即梦 Seedance 用的：整体风格为治愈系奇幻插画风，8K超高清，梦幻氛围。场景妆造：小女孩穿鹅黄色连衣裙，麻花辫，眼神清澈灵动。颜色对撞：鹅黄×天空蓝。镜头1：极近起幅（Macro Opening），镜头极度贴近草叶露珠，焦点丝滑转移至远处的小女孩。镜头2：轨道推镜（Dolly In），小女孩在花田中奔跑，裙摆飞扬，画面晶莹剔透充满元气。后期：暖调LUT，轻快钢琴配乐，鸟鸣音效。",
-      "expected_output": "输出简派改写版：删掉颜色对撞/后期段/英文术语括注/氛围形容词（8K、梦幻、晶莹、元气），「治愈系奇幻插画风」压缩进开头一行意图；主体+场景+音乐（不要BGM只出音效）+若干 Shot 01 / Shot 02 前缀的大白话镜头行；保留可用的事件信息（露珠特写转焦、花田奔跑）；结尾一行约束。",
+      "expected_output": "输出简派改写版：删掉颜色对撞/后期段/英文术语括注/氛围形容词（8K、梦幻、晶莹、元气），「治愈系奇幻插画风」压缩进开头一行意图；主体+场景+音乐（不要BGM只出音效）+若干 Shot 01 / Shot 02 前缀的大白话镜头行，未注明版本按 2.5 在编号后带秒段；保留可用的事件信息（露珠特写转焦、花田奔跑）；结尾一行约束。",
       "files": [],
       "assertions": [
         {
@@ -269,7 +269,7 @@
         },
         {
           "id": "f7_shot_numbering",
-          "description": "分镜前缀为 Shot 01、Shot 02（两位编号），不含时间段标签",
+          "description": "分镜前缀为 Shot 01、Shot 02（两位编号）；未注明版本按 2.5，编号后带首尾相接的秒段",
           "type": "presence"
         }
       ]
@@ -295,7 +295,7 @@
     {
       "id": 8,
       "prompt": "Seedance 2.5，10 秒：@Image 1 是我的小骑士角色图，@Video 1 是一段真人起跳挥剑的动作视频，让小骑士在城堡废墟上做同样的动作。",
-      "expected_output": "B 节简派：主体行锁小骑士（@Image 1 完整可见造型），Shot 行里对@Video 1 写清借什么（起跳—挥剑动作节奏）、不借什么（真人身份 / 场景 / 声音）；事件按因果顺序（起跳→空中→落地）；音效行；Shot 01 / Shot 02 编号，无秒数。",
+      "expected_output": "B 节简派：主体行锁小骑士（@Image 1 完整可见造型），Shot 行里对@Video 1 写清借什么（起跳—挥剑动作节奏）、不借什么（真人身份 / 场景 / 声音）；事件按因果顺序（起跳→空中→落地）；音效行；Shot 01（0-2s）/ Shot 02 式编号加秒段（2.5），秒段总和 10 秒。",
       "files": [],
       "assertions": [
         {
@@ -315,7 +315,7 @@
         },
         {
           "id": "g4_shot_numbering",
-          "description": "分镜前缀为 Shot 01、Shot 02，无时间段标签",
+          "description": "分镜前缀为 Shot 01、Shot 02，编号后带秒段（2.5），秒段首尾相接、总和 10 秒",
           "type": "presence"
         },
         {
@@ -333,7 +333,7 @@
     {
       "id": 9,
       "prompt": "Seedance 2.5，给我一个完整导演方案：20 秒 16:9。@Image 1 是女主完整人物参考（保持原服装），@Image 2 是老式火车站台场景图，@Audio 1 是她的音色参考。她在站台上拿到一封信，读完抬头，说一句「我等到了」。",
-      "expected_output": "full-direction 四段：导演方案（模式 basic、20s、16:9、一句话意图、Shot 概览）→ 素材映射表（@Image 1 身份锁完整可见人物、不继承背景；@Image 2 场景；@Audio 1 音色绑定到台词 Shot）→ 连续性与禁止项 → 唯一一个最终提示词代码块（开头意图行 + 简派四段 + Shot 01… + 结尾约束行，台词原文，不要 BGM 只出音效）。",
+      "expected_output": "full-direction 四段：导演方案（模式 basic、20s、16:9、一句话意图、Shot 概览）→ 素材映射表（@Image 1 身份锁完整可见人物、不继承背景；@Image 2 场景；@Audio 1 音色绑定到台词 Shot）→ 连续性与禁止项 → 唯一一个最终提示词代码块（开头意图行 + 简派四段 + 带秒段的 Shot 01（0-4s）… + 结尾约束行，台词原文，不要 BGM 只出音效）。",
       "files": [],
       "assertions": [
         {
@@ -365,18 +365,23 @@
           "id": "h6_no_bgm",
           "description": "最终提示词要求不要 BGM 只出音效",
           "type": "presence"
+        },
+        {
+          "id": "h7_shot_seconds",
+          "description": "最终提示词的 Shot 编号后带秒段（2.5），首尾相接、总和 20 秒",
+          "type": "presence"
         }
       ]
     },
     {
       "id": 10,
       "prompt": "Seedance 2.5，精确 30 秒时间轴，16:9：一位老木匠在工坊里完成一把椭圆木碗的最后打磨，第 10 秒吹掉木屑，第 25 秒把碗举到窗光下看。只要提示词。",
-      "expected_output": "时间轴模式：0-30s 连续不重叠切片（如 0-4s / 4-10s / 10-18s / 18-25s / 25-30s），每片含阶段功能 + 可见动作 + 机位 + 声音 + 结束状态；第 10 秒吹木屑、第 25 秒举碗落在对应切片边界；不要 BGM 只出打磨 / 呼气 / 木屑声；只有一个代码块，无解释。",
+      "expected_output": "2.5 秒段格式：Shot 01【阶段功能】（0-4s）式，0-30s 连续不重叠（如 0-4s / 4-10s / 10-18s / 18-25s / 25-30s），每段含阶段功能 + 可见动作 + 机位 + 声音 + 结束状态；第 10 秒吹木屑、第 25 秒举碗落在对应切片边界；不要 BGM 只出打磨 / 呼气 / 木屑声；只有一个代码块，无解释。",
       "files": [],
       "assertions": [
         {
-          "id": "i1_timeline_format",
-          "description": "用 0-4s 式时间切片而非 Shot 编号",
+          "id": "i1_shot_stage_seconds",
+          "description": "每段写成 Shot 0N【2–4 字阶段功能】（起-止s）：…，秒段用 0-4s 式",
           "type": "presence"
         },
         {
@@ -409,18 +414,18 @@
     {
       "id": 11,
       "prompt": "Seedance 2.5，30 秒 16:9：一位老木匠在工坊里完成一把椭圆木碗的最后打磨，吹掉木屑，把碗举到窗光下看，满意地点头。只要提示词。",
-      "expected_output": "30s 但用户没要精确时间轴 → 仍用 Shot 编号，且每个 Shot 带【阶段功能】（如 Shot 01【收尾打磨】、Shot 03【吹屑】、Shot 05【举碗】、Shot 06【余韵】）。开头一行意图含风格 / 光影（写实、窗光、木屑体积光）；主体 / 场景 / 音乐三行；结尾约束行锁木匠身份、服装、机位和光向，禁字幕 / BGM。无 0-4s 式秒段。",
+      "expected_output": "30s（2.5）：Shot 编号 + 【阶段功能】 + 秒段（如 Shot 01【收尾打磨】（0-5s）、Shot 03【吹屑】、Shot 05【举碗】、Shot 06【余韵】），秒段首尾相接、总和 30 秒。开头一行意图含风格 / 光影（写实、窗光、木屑体积光）；主体 / 场景 / 音乐三行；结尾约束行锁木匠身份、服装、机位和光向，禁字幕 / BGM。",
       "files": [],
       "assertions": [
         {
           "id": "j1_shot_with_stage",
-          "description": "Shot 行格式为 Shot 0N【2–4 字阶段功能】：…",
+          "description": "Shot 行格式为 Shot 0N【2–4 字阶段功能】（起-止s）：…",
           "type": "presence"
         },
         {
-          "id": "j2_no_seconds",
-          "description": "没有 0-4s / 4-10s 这类秒段",
-          "type": "absence"
+          "id": "j2_seconds_continuous",
+          "description": "秒段首尾相接、不重叠、总和 30 秒",
+          "type": "presence"
         },
         {
           "id": "j3_intent_first",
@@ -440,6 +445,211 @@
         {
           "id": "j6_sfx_only",
           "description": "不要 BGM，只出打磨 / 呼气 / 木屑声",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "即梦 Seedance 2.0，12 秒：一个小男孩在雪地里堆好雪人，给它戴上红帽子，一阵风把帽子吹走，他追着帽子跑出画面。只要提示词。",
+      "expected_output": "2.0 规则：Shot 01 / Shot 02 只编号、不带秒段，4–6 个 Shot（按每镜 2–3 秒凑够 12 秒）；开头一行意图、主体 / 场景 / 音乐三行、结尾一行约束；事件按因果顺序（戴帽 → 起风 → 帽子飞走 → 追）；不要 BGM 只出音效；只有一个代码块。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "k1_shot_no_seconds",
+          "description": "分镜前缀为 Shot 01、Shot 02 两位编号，没有 0-3s 式秒段（2.0 只编号）",
+          "type": "presence"
+        },
+        {
+          "id": "k2_shot_count",
+          "description": "有 4–6 个 Shot 行",
+          "type": "presence"
+        },
+        {
+          "id": "k3_causal",
+          "description": "戴帽 → 起风 → 帽子被吹走 → 男孩追出画面，按因果顺序，帽子飞走不早于起风",
+          "type": "presence"
+        },
+        {
+          "id": "k4_intent_and_constraint",
+          "description": "第一行是全局意图，最后一行是「约束：」连续性锁 + 禁止项",
+          "type": "presence"
+        },
+        {
+          "id": "k5_sfx_only",
+          "description": "不要 BGM，只出音效（风声、踩雪声等）",
+          "type": "presence"
+        },
+        {
+          "id": "k6_prompt_only",
+          "description": "只有一个代码块，没有导演方案段和分析",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "即梦 15 秒：一只柯基在公园里偷走主人野餐布上的三明治，主人用手机边追边拍。",
+      "expected_output": "命中题材配方（宠物主角 + 手持 vlog）：主体行写明全片只有一只柯基及识别特征；单独一行相机（主人怎么拿手机 + 手抖 / 对焦来回找 / 曝光变化等缺陷）；只列现场声、不要 BGM；动作逐镜推进，最后落到镜头上（狗凑近镜头）；约束行禁第二只狗 / 倒影分身、狗不说话不直立、不用稳定器和电影式运镜、无调色美颜。未注明版本按 2.5，Shot 编号后带秒段、总和 15 秒。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "l1_count_lock",
+          "description": "写明全片只有一只柯基，并禁止出现第二只狗或镜中倒影分身",
+          "type": "presence"
+        },
+        {
+          "id": "l2_camera_line",
+          "description": "有单独的相机行：谁拿手机、怎么拿，并列出至少 3 项实拍缺陷（手抖 / 对焦来回找 / 曝光变化 / 构图漂移等）",
+          "type": "presence"
+        },
+        {
+          "id": "l3_no_cinematic",
+          "description": "约束禁稳定器或电影式运镜，并写无调色 / 无美颜",
+          "type": "presence"
+        },
+        {
+          "id": "l4_animal_behavior",
+          "description": "写明狗不说话、不穿衣服、不像人一样直立行走（至少两项）",
+          "type": "presence"
+        },
+        {
+          "id": "l5_lens_ending",
+          "description": "最后一镜落在镜头上（狗凑近镜头、鼻子或爪子占满画面等），并写清最后一帧",
+          "type": "presence"
+        },
+        {
+          "id": "l6_live_sound",
+          "description": "不要 BGM，只列现场声（脚步、喘气、狗的声音等）",
+          "type": "presence"
+        },
+        {
+          "id": "l7_shot_seconds",
+          "description": "未注明版本按 2.5：Shot 编号后带秒段，首尾相接、总和 15 秒",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Seedance 2.5，12 秒 16:9 香水广告：@Image 1 是香水瓶产品图。要高级感，最后一个英雄镜头。只要提示词。",
+      "expected_output": "命中题材配方（电影级产品广告）：开头意图写广告美学和光线；单独一行产品锁（瓶形、瓶盖、比例、材质颜色与 @Image 1 一致）；每个微距 / 慢动作写明拍什么；一镜一种效果；不让模型生成文字（禁新增文字 / logo / slogan，不给标签特写）；最后一镜产品英雄镜头并写清最后一帧；不要 BGM 只出音效；Shot 带秒段、总和 12 秒；只有一个代码块。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "m1_ad_aesthetic_first",
+          "description": "第一行意图写明高端广告质感和具体光线（暗调棚拍 / 体积光 / 轮廓光等）",
+          "type": "presence"
+        },
+        {
+          "id": "m2_product_lock",
+          "description": "单独一行锁产品：瓶形 / 瓶盖 / 比例 / 材质或颜色与 @Image 1 一致",
+          "type": "presence"
+        },
+        {
+          "id": "m3_named_macro",
+          "description": "每个微距或慢动作镜头写明拍的是什么具体物（高光扫过瓶肩 / 液体 / 水滴等）",
+          "type": "presence"
+        },
+        {
+          "id": "m4_one_effect_per_shot",
+          "description": "液体、烟雾、粉末等效果不叠在同一镜",
+          "type": "presence"
+        },
+        {
+          "id": "m5_no_text_render",
+          "description": "约束禁止新增文字 / logo / slogan，且没有标签文字特写",
+          "type": "presence"
+        },
+        {
+          "id": "m6_hero_final_frame",
+          "description": "最后一镜是产品英雄镜头，写清最后一帧停在哪、画面稳定；没有写淡出",
+          "type": "presence"
+        },
+        {
+          "id": "m7_shot_seconds",
+          "description": "Shot 带秒段，首尾相接、总和 12 秒，单段不短于 1 秒",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Seedance 10 秒：两个剑客在竹林里对决，要真实的打斗，不要血。",
+      "expected_output": "命中题材配方（打斗编排）：写明流派或真实发力（踏步转胯、重量、反震）；招式写成攻守连招链并写出兵器接触点；锁武器数量和握持；10 秒不超过 4 个 Shot；约束行写不越轴、禁瞬移 / 腾空 / 身体瘫软、无血无伤口；不要 BGM 只出音效；未注明版本按 2.5，Shot 带秒段、总和 10 秒。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "n1_biomechanics",
+          "description": "写明流派或真实发力方式（重量 / 反震 / 踏步转胯等），不只写「史诗」「帅气」",
+          "type": "presence"
+        },
+        {
+          "id": "n2_combo_chain",
+          "description": "招式写成有攻有守的连招链，并写出兵器接触点",
+          "type": "presence"
+        },
+        {
+          "id": "n3_weapon_lock",
+          "description": "锁定武器数量和握持（每人一把剑、哪只手握）",
+          "type": "presence"
+        },
+        {
+          "id": "n4_segment_cap",
+          "description": "10 秒内不超过 4 个 Shot",
+          "type": "presence"
+        },
+        {
+          "id": "n5_axis_and_cheats",
+          "description": "约束写不越轴或固定左右站位，并禁瞬移 / 腾空 / 身体瘫软（至少两项）",
+          "type": "presence"
+        },
+        {
+          "id": "n6_no_blood",
+          "description": "写明无血、无伤口",
+          "type": "presence"
+        },
+        {
+          "id": "n7_shot_seconds",
+          "description": "未注明版本按 2.5：Shot 带秒段，首尾相接、总和 10 秒",
+          "type": "presence"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "即梦 15 秒，日式赛璐珞动漫风：少女在雨后的天台上弹吉他，风吹起她的头发。",
+      "expected_output": "命中题材配方（动漫画风固定）：开头意图写赛璐珞 / 2D 手绘画风；单独一行画风参数（轮廓线粗细颜色、阴影段数、高光层数、材质反光）；给角色定固有色并全片不变；背景比角色暗一档；约束行列相邻画风排除（通用 3D 脸 / 半写实 / 塑料 CG / 单层平涂）并禁文字招牌；不要 BGM 只出音效；未注明版本按 2.5，Shot 带秒段、总和 15 秒。",
+      "files": [],
+      "assertions": [
+        {
+          "id": "o1_style_in_intent",
+          "description": "第一行意图写明赛璐珞或 2D 手绘画风",
+          "type": "presence"
+        },
+        {
+          "id": "o2_measurable_style",
+          "description": "有可测量的画风参数（轮廓线粗细或颜色 / 阴影段数 / 高光层数，至少两项）",
+          "type": "presence"
+        },
+        {
+          "id": "o3_adjacent_exclusion",
+          "description": "约束列出相邻画风排除（通用 3D 脸 / 半写实 / 塑料 CG / 单层平涂等，至少两项）",
+          "type": "presence"
+        },
+        {
+          "id": "o4_palette_lock",
+          "description": "给角色定固有色并要求全片不变",
+          "type": "presence"
+        },
+        {
+          "id": "o5_no_text",
+          "description": "禁止画面出现文字或招牌",
+          "type": "presence"
+        },
+        {
+          "id": "o6_shot_seconds",
+          "description": "未注明版本按 2.5：Shot 带秒段，首尾相接、总和 15 秒",
           "type": "presence"
         }
       ]
