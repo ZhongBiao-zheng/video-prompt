@@ -6,7 +6,7 @@ AI 视频生成提示词 skill：给 Claude Code / Codex 等 agent 用，把想�
 
 | 平台 | 走法 | 特点 |
 |------|------|------|
-| Seedance / 即梦 | `references/seedance.md`（简派）+ `references/seedance-genre-recipes.md`（题材配方） | 一头 + 四段 + 一尾；2.5 的 Shot 带秒段、2.0 只编号；大白话机位、只出音效不出 BGM、不堆形容词 |
+| Seedance / 即梦 | `references/seedance.md`（详写骨架）+ `references/seedance-genre-recipes.md`（题材配方） | 12 段：写死人数、参考用途、空间地图、首帧站位、按秒节拍、行为式表演、只出音效不出 BGM |
 | Kling / 可灵、Sora、Runway、Hailuo、Pika、Vidu、纯文字 | `references/general.md`（繁派） | 总纲句 + 场景妆造 + 分镜序列 + 后期；运镜术语「中文（英文）」、颜色对撞 |
 
 ## 安装
@@ -57,18 +57,19 @@ Shot 02（3-6s）：……
 ```
 SKILL.md                                   分平台、判模式、路由到下面的文件
 references/general.md                      繁派：骨架 / 六维度 / 句式素材 / 颜色对撞 / 运镜词库 / 参考图绑定
-references/seedance.md                     简派：骨架与硬规则 / 范例 / 抽卡 / 自检 / 2.0 与 2.5 官方补充
+references/seedance.md                     详写骨架：12 段写法 / 敏感词 / 范例 / 自检 / 2.0 与 2.5 官方补充
 references/seedance-2.0-official.md        官方参数硬约束 / @素材指挥语法
 references/seedance-2.5-official.md        官方场景配方（真人脸 / 30s / 延长 / 编辑 / 白模 / 转场）
 references/seedance-director-workflow.md   分档 9 步 / 素材锁定表 / 输出模式 / 秒段规则
 references/seedance-direction-patterns.md  参考作用域 / 因果链 / 台词预算 / 无缝转场 / 矛盾自检
 references/seedance-genre-recipes.md       22 类题材配方：必写锁 / 写法 / 常见问题
-evals/evals.json                           16 个测试用例（prompt + 预期 + 断言）
+evals/evals.json                           17 个测试用例（prompt + 预期 + 断言）
 ```
 
 ## 来源与致谢
 
-- Seedance 简派心法：[@simonxxoo 实测心得](https://x.com/ring_hyacinth/status/2076284324345987386)（@ring_hyacinth 转述，2026-07）
+- Seedance 详写骨架：改写自 Higgsfield Studio《HELL GRIND》Project Brief 的制作方法（2026-08）
+- Seedance 早期简派心法（保留音效、故事板、分辨率结论）：[@simonxxoo 实测心得](https://x.com/ring_hyacinth/status/2076284324345987386)（@ring_hyacinth 转述，2026-07）
 - 官方配方：即梦 Seedance 2.0 / 2.5 使用手册（字节跳动）
 - 导演流程与手法：[liyue-aigc/seedance-2-5-video-director](https://github.com/liyue-aigc/seedance-2-5-video-director)（MIT）
 - 题材配方：改写自 [LearnPrompt/awesome-seedance](https://github.com/LearnPrompt/awesome-seedance) 的分类模板（策展内容 CC BY 4.0，awesome-seedance / goodcase.ai）
