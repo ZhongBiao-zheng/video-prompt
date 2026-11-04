@@ -1,12 +1,8 @@
-<div align="center">
-
 # video-prompt
 
-### Claude Code / Codex 视频提示词 skill：分平台写出可直接粘进 Seedance / 即梦、Kling、Sora 的 prompt
+Claude Code / Codex 视频提示词 skill：分平台写出可直接粘进 Seedance / 即梦、Kling、Sora 的 prompt
 
 [![License](https://img.shields.io/github/license/ZhongBiao-zheng/video-prompt?color=111111)](LICENSE) [![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-111111)](https://skills.sh/zhongbiao-zheng/video-prompt/video-prompt) [![Codex](https://img.shields.io/badge/Codex-skill-111111)](https://skills.sh/zhongbiao-zheng/video-prompt/video-prompt)
-
-</div>
 
 把想法、粗糙描述或已有 prompt 交给 agent，video-prompt 先判断目标视频平台，再按该平台的规则写出能直接粘贴的 prompt。除了写新 prompt，也能出导演方案、诊断冲突、按原结构改写。它只产出文本：不调用视频模型，不写图片提示词，不做剪辑后期。
 
