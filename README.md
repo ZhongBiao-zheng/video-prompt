@@ -1,13 +1,23 @@
+<div align="center">
+
 # video-prompt
 
-AI 视频生成提示词 skill：给 Claude Code / Codex 等 agent 用，把想法或粗糙描述改写成能直接粘进视频平台的 prompt。
+### Claude Code / Codex 视频提示词 skill：分平台写出可直接粘进 Seedance / 即梦、Kling、Sora 的 prompt
 
-核心判断只有一条：**先分平台，两派规则相反。**
+[![License](https://img.shields.io/github/license/ZhongBiao-zheng/video-prompt?color=111111)](LICENSE) [![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-111111)](https://skills.sh/zhongbiao-zheng/video-prompt/video-prompt) [![Codex](https://img.shields.io/badge/Codex-skill-111111)](https://skills.sh/zhongbiao-zheng/video-prompt/video-prompt)
 
-| 平台 | 走法 | 特点 |
-|------|------|------|
-| Seedance / 即梦 | `references/seedance.md`（详写骨架）+ `references/seedance-genre-recipes.md`（题材配方） | 12 段：写死人数、参考用途、空间地图、首帧站位、按秒节拍、行为式表演、只出音效不出 BGM |
-| Kling / 可灵、Sora、Runway、Hailuo、Pika、Vidu、纯文字 | `references/general.md`（繁派） | 总纲句 + 场景妆造 + 分镜序列 + 后期；运镜术语「中文（英文）」、颜色对撞 |
+</div>
+
+把想法、粗糙描述或已有 prompt 交给 agent，video-prompt 先判断目标视频平台，再按该平台的规则写出能直接粘贴的 prompt。除了写新 prompt，也能出导演方案、诊断冲突、按原结构改写。它只产出文本：不调用视频模型，不写图片提示词，不做剪辑后期。
+
+## 为什么用 video-prompt
+
+- **按平台换写法**：Seedance / 即梦 用 12 段详写骨架，Kling、Sora 等用结构化繁派骨架。两派规则相反，同一段 prompt 放错平台效果会变差。
+- **一句话想法也能起稿**：描述不足时一次问全主体、场景、情绪、时长；描述够了直接写。
+- **常见题材有配方**：产品广告、宠物、打斗、MV、恐怖等 22 类题材，自动补数量锁、相机缺陷清单和对应禁止项。
+- **参考图先定用途**：给了角色图、场景图，先确定每张图管什么，再写分镜，素材统一标 `@Image N`。
+
+只想直接生成视频，或者要写图片提示词，用不到它。
 
 ## 安装
 
@@ -19,9 +29,8 @@ npx skills add ZhongBiao-zheng/video-prompt
 
 ```bash
 git clone https://github.com/ZhongBiao-zheng/video-prompt ~/.claude/skills/video-prompt
+ln -s ~/.claude/skills/video-prompt ~/.codex/skills/video-prompt   # Codex 共用同一份
 ```
-
-Codex 共用：`ln -s ~/.claude/skills/video-prompt ~/.codex/skills/video-prompt`。
 
 ## 使用
 
@@ -34,6 +43,15 @@ Codex 共用：`ln -s ~/.claude/skills/video-prompt ~/.codex/skills/video-prompt
 - 「写个即梦 15 秒的宠物抢镜手机实拍」（命中题材配方，自动补数量锁、相机缺陷清单和对应禁止项）
 
 平台从上下文判断，判断不了会先问一句。Seedance 支持 5 种输出：只要提示词（默认）/ 导演方案 / 只要脚本 / 只诊断 / 按原结构改写。
+
+## 工作原理
+
+先分平台，再读对应规则文件：
+
+| 平台 | 规则文件 | 特点 |
+|------|------|------|
+| Seedance / 即梦 | `references/seedance.md`（详写骨架）+ `references/seedance-genre-recipes.md`（题材配方） | 12 段：写死人数、参考用途、空间地图、首帧站位、按秒节拍、行为式表演、只出音效不出 BGM |
+| Kling / 可灵、Sora、Runway、Hailuo、Pika、Vidu、纯文字 | `references/general.md`（繁派） | 总纲句 + 场景妆造 + 分镜序列 + 后期；运镜术语「中文（英文）」、颜色对撞 |
 
 Seedance 输出骨架：
 
@@ -52,7 +70,7 @@ Shot 02（3-6s）：……
 约束：[全片锁什么 + 禁止什么]
 ```
 
-## 文件
+## 文件结构
 
 ```
 SKILL.md                                   分平台、判模式、路由到下面的文件
@@ -74,6 +92,6 @@ evals/evals.json                           17 个测试用例（prompt + 预期 
 - 导演流程与手法：[liyue-aigc/seedance-2-5-video-director](https://github.com/liyue-aigc/seedance-2-5-video-director)（MIT）
 - 题材配方：改写自 [LearnPrompt/awesome-seedance](https://github.com/LearnPrompt/awesome-seedance) 的分类模板（策展内容 CC BY 4.0，awesome-seedance / goodcase.ai）
 
-## License
+## 许可证
 
-MIT
+[MIT](LICENSE)
